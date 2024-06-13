@@ -5,7 +5,7 @@ export default function ArtPieceDetailsPage({ pieces }) {
   const router = useRouter();
   const { slug } = router.query;
 
-  const piecesIndex = pieces.findIndex(({ slug }) => slug === slug);
+  const piecesIndex = pieces.findIndex((piece) => piece.slug === slug);
 
   const piece = pieces[piecesIndex];
 
