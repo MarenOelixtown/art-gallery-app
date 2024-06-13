@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { useEffect, useState } from "react";
+import Layout from "@/components/Layout";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -29,8 +30,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
-      <Component randomPiece={randomPiece} pieces={data} {...pageProps} />
+      <Layout>
+        <GlobalStyle />
+        <Component randomPiece={randomPiece} pieces={data} {...pageProps} />
+      </Layout>
     </>
   );
 }
