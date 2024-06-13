@@ -1,11 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  isFavorite,
+  onToggleFavorite,
+}) {
   return (
     <div>
       <h2>{title}</h2>
       <p>{artist}</p>
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+      />
       <Image
         src={image}
         alt={`Picture: ${title} from artist ${artist}`}

@@ -11,6 +11,30 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
   const [randomPiece, setRandomPiece] = useState(null);
+  const [artPiecesInfo, setArtPiecesInfo] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // const toggleFavourite = (slug) => {
+  //   setArtPiecesInfo((prevInfo) => ({
+  //     ...prevInfo,
+  //     [slug]: {
+  //       ...prevInfo[slug],
+  //       isFavorite: !prevInfo[slug]?.isFavorite,
+  //     },
+  //   }));
+  // };
+
+  const toggleFavourite = (slug) => {
+    setArtPiecesInfo((prevArtPiecesInfo) =>
+      prevArtPiecesInfo.map((data) =>
+        data.slug === slug ? { ...data, isFavorite: !data.isFavorite } : data
+      )
+    );
+  };
+
+  function onToggleFavorite() {
+    console.log("button clicked");
+  }
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -32,7 +56,13 @@ export default function App({ Component, pageProps }) {
     <>
       <Layout>
         <GlobalStyle />
-        <Component randomPiece={randomPiece} pieces={data} {...pageProps} />
+        <Component
+          randomPiece={randomPiece}
+          pieces={data}
+          onToggleFavorite={onToggleFavorite}
+          artPiecesInfo={artPiecesInfo}
+          {...pageProps}
+        />
       </Layout>
     </>
   );
