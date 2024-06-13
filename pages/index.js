@@ -1,5 +1,7 @@
 import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
+import { useEffect, useState } from "react";
+import Spotlight from "@/components/Spotlight";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -9,12 +11,33 @@ export default function HomePage() {
     fetcher
   );
 
+  const [randomPiece, setRandomPiece] = useState(null);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      setRandomPiece(getRandomElement(data));
+    }
+  }, [data]);
+
+  console.log(randomPiece);
+
+  function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
   if (error) return <div>Failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
   console.log(data);
   console.log(data.name);
   return (
     <div>
+      {randomPiece && (
+        <Spotlight
+          image={randomPiece.imageSource}
+          artist={randomPiece.artist}
+        />
+      )}
+
       <ArtPieces pieces={data} />
     </div>
   );
