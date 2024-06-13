@@ -1,14 +1,4 @@
 import ArtPiecePreview from "./ArtPiecePreview";
-import Link from "next/link";
-import styled from "styled-components";
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-  &:hover {
-    color: hotpink;
-  }
-`;
 
 export default function ArtPieces({ pieces }) {
   return (
