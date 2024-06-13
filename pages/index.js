@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
 import { useEffect, useState } from "react";
+import Spotlight from "@/components/Spotlight";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -30,6 +31,13 @@ export default function HomePage() {
   console.log(data.name);
   return (
     <div>
+      {randomPiece && (
+        <Spotlight
+          image={randomPiece.imageSource}
+          artist={randomPiece.artist}
+        />
+      )}
+
       <ArtPieces pieces={data} />
     </div>
   );
