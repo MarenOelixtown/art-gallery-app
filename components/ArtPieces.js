@@ -16,13 +16,12 @@ export default function ArtPieces({ pieces }) {
       <ul>
         {pieces.map((piece) => (
           <li key={piece.slug}>
-            <StyledLink href={`/art-pieces/${piece.slug}`}>
-              <ArtPiecePreview
-                image={piece.imageSource}
-                title={piece.name}
-                artist={piece.artist}
-              />
-            </StyledLink>
+            <ArtPiecePreview
+              slug={piece.slug}
+              image={piece.imageSource}
+              title={piece.name}
+              artist={piece.artist}
+            />
           </li>
         ))}
       </ul>
