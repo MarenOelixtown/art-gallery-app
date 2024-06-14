@@ -1,3 +1,8 @@
+import styled from "styled-components";
+
 export default function HomePage({}) {
-  return <h1>Welcome to the Art Gallery!</h1>;
+  const StyledH = styled.h1`
+    margin: 20px;
+  `;
+  return <StyledH>Welcome to the Art Gallery!</StyledH>;
 }

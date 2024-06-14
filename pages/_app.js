@@ -11,6 +11,27 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
   const [randomPiece, setRandomPiece] = useState(null);
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      const initialArtPiecesInfo = data.map((piece) => ({
+        ...piece,
+        isFavorite: false,
+      }));
+      setArtPiecesInfo(initialArtPiecesInfo);
+    }
+  }, [data]);
+
+  const toggleFavourite = (slug) => {
+    setArtPiecesInfo((prevData) =>
+      prevData.map((piece) =>
+        piece.slug === slug
+          ? { ...piece, isFavorite: !piece.isFavorite }
+          : piece
+      )
+    );
+  };
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -18,21 +39,24 @@ export default function App({ Component, pageProps }) {
     }
   }, [data]);
 
-  console.log(randomPiece);
   function getRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
 
   if (error) return <div>Failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
-  console.log(data);
-  console.log(data.name);
 
   return (
     <>
       <Layout>
         <GlobalStyle />
-        <Component randomPiece={randomPiece} pieces={data} {...pageProps} />
+        <Component
+          randomPiece={randomPiece}
+          pieces={data}
+          onToggleFavorite={toggleFavourite}
+          artPiecesInfo={artPiecesInfo}
+          {...pageProps}
+        />
       </Layout>
     </>
   );

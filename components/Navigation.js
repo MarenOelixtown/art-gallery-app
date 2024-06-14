@@ -1,14 +1,25 @@
 import Link from "next/link";
+import styled from "styled-components";
 
 export default function Navigation() {
+  const StyledNav = styled.div`
+    margin: 10px;
+  `;
+
+  const StyledLink = styled(Link)`
+    &:hover {
+      color: hotpink;
+    }
+  `;
+
   return (
-    <nav>
+    <StyledNav>
       <p>
-        <Link href="/spotlight">Spotlight</Link>
+        <StyledLink href="/spotlight">Spotlight</StyledLink>
       </p>
       <p>
-        <Link href="/art-pieces">Pieces</Link>
+        <StyledLink href="/art-pieces">Pieces</StyledLink>
       </p>
-    </nav>
+    </StyledNav>
   );
 }

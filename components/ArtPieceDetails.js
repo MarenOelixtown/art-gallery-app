@@ -1,11 +1,53 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
+import styled from "styled-components";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+const StyledLink = styled(Link)`
+  &:hover {
+    color: hotpink;
+  }
+`;
+
+const StyledBody = styled.div`
+  margin: 20px;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  align-content: space-between
+  margin-bottom: 5px;
+`;
+
+const StyledP = styled.p`
+  margin-right: 5px;
+`;
+
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  slug,
+  onToggleFavorite,
+  artPiecesInfo,
+}) {
+  const isFavorite = artPiecesInfo.find((artPiece) => {
+    return artPiece.slug === slug;
+  })?.isFavorite;
+
   return (
-    <div>
+    <StyledBody>
       <h2>{title}</h2>
-      <p>{artist}</p>
+      <StyledDiv>
+        <StyledP>{artist}</StyledP>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
+      </StyledDiv>
       <Image
         src={image}
         alt={`Picture: ${title} from artist ${artist}`}
@@ -14,7 +56,7 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
       />
       <p>{year}</p>
       <p>{genre}</p>
-      <Link href="/art-pieces">Back to List</Link>
-    </div>
+      <StyledLink href="/art-pieces">Back to List</StyledLink>
+    </StyledBody>
   );
 }
