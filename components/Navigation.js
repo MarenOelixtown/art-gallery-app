@@ -20,6 +20,9 @@ export default function Navigation() {
       <p>
         <StyledLink href="/art-pieces">Pieces</StyledLink>
       </p>
+      <p>
+        <StyledLink href="/favorites">Favorites</StyledLink>
+      </p>
     </StyledNav>
   );
 }
