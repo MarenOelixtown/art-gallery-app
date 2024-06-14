@@ -1,6 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
+import styled from "styled-components";
+
+const StyledLink = styled(Link)`
+  &:hover {
+    color: hotpink;
+  }
+`;
+
+const StyledBody = styled.div`
+  margin: 20px;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  align-content: space-between
+  margin-bottom: 5px;
+`;
+
+const StyledP = styled.p`
+  margin-right: 5px;
+`;
 
 export default function ArtPieceDetails({
   image,
@@ -17,13 +39,15 @@ export default function ArtPieceDetails({
   })?.isFavorite;
 
   return (
-    <div>
+    <StyledBody>
       <h2>{title}</h2>
-      <p>{artist}</p>
-      <FavoriteButton
-        isFavorite={isFavorite}
-        onToggleFavorite={onToggleFavorite}
-      />
+      <StyledDiv>
+        <StyledP>{artist}</StyledP>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
+      </StyledDiv>
       <Image
         src={image}
         alt={`Picture: ${title} from artist ${artist}`}
@@ -32,7 +56,7 @@ export default function ArtPieceDetails({
       />
       <p>{year}</p>
       <p>{genre}</p>
-      <Link href="/art-pieces">Back to List</Link>
-    </div>
+      <StyledLink href="/art-pieces">Back to List</StyledLink>
+    </StyledBody>
   );
 }

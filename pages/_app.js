@@ -12,16 +12,7 @@ export default function App({ Component, pageProps }) {
   );
   const [randomPiece, setRandomPiece] = useState(null);
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
-  /*  const [isFavorite, setIsFavorite] = useState(false); */
 
-  // const toggleFavourite = (slug) => {
-  //   setArtPiecesInfo((prevInfo) => ({
-  //     ...prevInfo,
-  //     [slug]: {
-  //       ...prevInfo[slug],
-  //       isFavorite: !prevInfo[slug]?.isFavorite,
-  //   }));
-  // };
   useEffect(() => {
     if (data) {
       const initialArtPiecesInfo = data.map((piece) => ({
@@ -33,7 +24,6 @@ export default function App({ Component, pageProps }) {
   }, [data]);
 
   const toggleFavourite = (slug) => {
-    console.log("button clicked");
     setArtPiecesInfo((prevData) =>
       prevData.map((piece) =>
         piece.slug === slug
@@ -42,11 +32,6 @@ export default function App({ Component, pageProps }) {
       )
     );
   };
-  console.log(artPiecesInfo);
-
-  /*  function onToggleFavorite() {
-    
-  } */
 
   useEffect(() => {
     if (data && data.length > 0) {
