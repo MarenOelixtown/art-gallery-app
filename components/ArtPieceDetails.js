@@ -4,6 +4,7 @@ import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
 const StyledLink = styled(Link)`
+  color: black;
   &:hover {
     color: hotpink;
   }
