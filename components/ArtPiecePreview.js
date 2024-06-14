@@ -13,16 +13,16 @@ export default function ArtPiecePreview({
   title,
   artist,
   slug,
-  isFavorite,
   onToggleFavorite,
+  isFavorite,
 }) {
   return (
     <div>
       <h2>{title}</h2>
       <p>{artist}</p>
       <FavoriteButton
-        isFavorite={isFavorite}
         onToggleFavorite={onToggleFavorite}
+        isFavorite={isFavorite}
       />
       <StyledLink href={`/art-pieces/${slug}`}>
         <Image

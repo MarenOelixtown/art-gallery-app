@@ -1,6 +1,11 @@
 import ArtPiecePreview from "./ArtPiecePreview";
 
-export default function ArtPieces({ pieces }) {
+export default function ArtPieces({
+  pieces,
+  artPiecesInfo,
+  onToggleFavorite,
+  isFavorite,
+}) {
   return (
     <div>
       <ul>
@@ -11,6 +16,8 @@ export default function ArtPieces({ pieces }) {
               image={piece.imageSource}
               title={piece.name}
               artist={piece.artist}
+              onToggleFavorite={() => onToggleFavorite(piece.slug)}
+              isFavorite={piece.isFavorite}
             />
           </li>
         ))}

@@ -10,6 +10,7 @@ export default function ArtPieceDetails({
   genre,
   isFavorite,
   onToggleFavorite,
+  artPiecesInfo,
 }) {
   return (
     <div>
@@ -18,6 +19,7 @@ export default function ArtPieceDetails({
       <FavoriteButton
         isFavorite={isFavorite}
         onToggleFavorite={onToggleFavorite}
+        artPiecesInfo={artPiecesInfo}
       />
       <Image
         src={image}
