@@ -69,6 +69,7 @@ export default function App({ Component, pageProps }) {
           randomPiece={randomPiece}
           pieces={data}
           onToggleFavorite={toggleFavourite}
+          artPiecesInfo={artPiecesInfo}
           {...pageProps}
         />
       </Layout>

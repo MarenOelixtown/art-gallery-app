@@ -21,7 +21,8 @@ export default function ArtPieceDetailsPage({
       artist={piece.artist}
       year={piece.year}
       genre={piece.genre}
-      onToggleFavorite={onToggleFavorite}
+      slug={piece.slug}
+      onToggleFavorite={() => onToggleFavorite(piece.slug)}
       artPiecesInfo={artPiecesInfo}
       isFavorite={isFavorite}
     />

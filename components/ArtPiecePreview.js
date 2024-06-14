@@ -14,8 +14,12 @@ export default function ArtPiecePreview({
   artist,
   slug,
   onToggleFavorite,
-  isFavorite,
+  artPiecesInfo,
 }) {
+  const isFavorite = artPiecesInfo.find((artPiece) => {
+    return artPiece.slug === slug;
+  })?.isFavorite;
+
   return (
     <div>
       <h2>{title}</h2>

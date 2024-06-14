@@ -8,10 +8,14 @@ export default function ArtPieceDetails({
   artist,
   year,
   genre,
-  isFavorite,
+  slug,
   onToggleFavorite,
   artPiecesInfo,
 }) {
+  const isFavorite = artPiecesInfo.find((artPiece) => {
+    return artPiece.slug === slug;
+  })?.isFavorite;
+
   return (
     <div>
       <h2>{title}</h2>
@@ -19,7 +23,6 @@ export default function ArtPieceDetails({
       <FavoriteButton
         isFavorite={isFavorite}
         onToggleFavorite={onToggleFavorite}
-        artPiecesInfo={artPiecesInfo}
       />
       <Image
         src={image}

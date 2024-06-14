@@ -4,9 +4,14 @@ import FavoriteButton from "./FavoriteButton";
 export default function Spotlight({
   image,
   artist,
-  isFavorite,
+  slug,
+  artPiecesInfo,
   onToggleFavorite,
 }) {
+  const isFavorite = artPiecesInfo.find((artPiece) => {
+    return artPiece.slug === slug;
+  })?.isFavorite;
+
   return (
     <div>
       <p>{artist}</p>
